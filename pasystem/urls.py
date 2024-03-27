@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from pets import views as p_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',p_view.home,name='home'),
+    path('Services/',p_view.Services,name='Services'),
+    path('About Us/',p_view.About_Us,name='About Us'),
+    path('Contact/',p_view.Contact,name='Contact'),
+    path('login/',p_view.login,name='login'),
+    path('Sign Up/',p_view.Sign_Up,name='Sign Up')
 ]

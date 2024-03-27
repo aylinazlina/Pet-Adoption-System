@@ -1,0 +1,36 @@
+
+{% extends 'Main.html' %}
+{% block content %}
+
+<!-- On tables -->
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Species</th>
+       <th scope="col">Age</th>
+       <th scope="col">Description</th>
+       <th scope="col">Adoption Fee</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for p in pet %}
+
+    <tr>
+      <th scope="row">1</th>
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.species}}</td>
+      <td>{{p.age}}</td>
+      <td>{{p.description}}</td>
+      <td>{{p.adoptionFee}}</td>
+
+    </tr>
+
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock  %}
+
