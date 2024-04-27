@@ -16,15 +16,29 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+
+
 from pets import views as p_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',p_view.home,name='home'),
-    path('Services/',p_view.Services,name='Services'),
-    path('About Us/',p_view.About_Us,name='About Us'),
+    path('', p_view.home, name='home'),
+    path('ServicesAdoption/',p_view.Services_Adoption,name='ServicesAdoption'),
+    path(' /<str:id>',p_view.pet_details,name ='petdetails'),
+    path('upload_pet/',p_view.upload_pet,name='upload_pet'),
+    path('update/<str:id>',p_view.update,name='update'),
+    path('delete/<str:id>',p_view.delete,name='delete'),
+    path('Vaccination/',p_view.Vaccination,name='Vaccination'),
+    path('Foster/',p_view.Foster,name='Foster'),
+    path('MeetAndGreet/',p_view.Meet_and_Greet,name='MeetAndGreet'),
+    path('AboutUs/',p_view.About_Us,name='AboutUs'),
     path('Contact/',p_view.Contact,name='Contact'),
-    path('login/',p_view.login,name='login'),
-    path('Sign Up/',p_view.Sign_Up,name='Sign Up')
+    path('login/',p_view.loginPage,name='login'),
+    path('logout/', p_view.logoutUser, name='logout'),
+
+    path('SignUp/',p_view.Sign_Up,name='SignUp')
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

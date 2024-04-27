@@ -1,0 +1,14 @@
+{% extends 'Main.html' %}
+{% load static %}
+{% block content %}
+<p> Are you sure? </p>
+<form method="POST">
+    {% csrf_token %}
+    <a href="{% url 'ServicesAdoption' %}" class="btn btn-warning">No</a>
+    <input type="submit" name="Yes">
+
+
+</form>
+
+
+{% endblock %}

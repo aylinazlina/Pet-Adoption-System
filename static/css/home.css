@@ -1,0 +1,16 @@
+
+ {% load static %}
+ *{
+     margin:0;
+     padding:0;
+     font-family:sans-serif;
+
+
+ }
+.banner{
+  background: url(Girl_cat_playing.jpeg);
+
+height:500px or give to precentage(30% like that);
+width:1000px or give to precentage (70%);
+
+}

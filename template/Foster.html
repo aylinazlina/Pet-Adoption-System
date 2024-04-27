@@ -1,0 +1,18 @@
+{% extends 'Main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="card text-center ">
+{% for f in Fost %}
+  <div class="card-body">
+    <h5 class="card-title">Fostering Application</h5>
+    <p class="card-text">Pet Catagory:{{f.Condition}}</p>
+    <p class="card-text">Accomodation:{{f.AccomodationAvailablity}}</p>
+
+    <a href="#" class="btn btn-primary">{{f.Reqeust}}</a>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock  %}

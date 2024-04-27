@@ -1,0 +1,20 @@
+{% extends 'Main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card-text-white bg-danger mb-3" style="width:40rem;">
+ {% for v in Vacc %}
+  <div class="card-body">
+    <h5 class="card-title">Vaccination Schedule</h5>
+  </div>
+  <ul class="list-group list-group-flush">>
+
+      <li class="list-group-item"> Pet Catagory:{{v.Pet_Category}}</li>
+     <li class="list-group-item"> Time duration:{{v.Type}}</li>
+      <li class="list-group-item"> Appointment Schedule :{{v.BookingAppointment}}</li>
+
+  </ul>
+ {% endfor %}
+</div>
+
+{% endblock  %}

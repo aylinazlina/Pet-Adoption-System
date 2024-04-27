@@ -1,0 +1,28 @@
+{% extends 'Main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card text-center">
+      <div class="card-text-white bg-info mb-3 " style="width: 18rem;">
+        {% if petpre.image %}
+        <img class="card-img-top" src="{{petpre.image.url}}" alt="Card image cap">
+        {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">Species:{{petpre.species}}</h5>
+            <p class="card-text">Description:{{petpre.description}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Age:{{petpre.age}}</li>
+            <li class="list-group-item">Size:{{petpre.size}}</li>
+            <li class="list-group-item">Adoption Fee:{{petpre.adoptionFee}}</li>
+          </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock  %}

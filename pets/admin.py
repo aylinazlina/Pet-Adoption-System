@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Pet,PetPreference,AdoptionApplication,MeetAndGreet,Service
+from .models import PetPreference,Adoption,MeetAndGreet,Service,Vacci,Fostering
 
 # Register your models here.
-admin.site.register([Pet,PetPreference,AdoptionApplication,MeetAndGreet,Service])
+admin.site.register([PetPreference,Adoption,MeetAndGreet,Service,Vacci,Fostering])
 

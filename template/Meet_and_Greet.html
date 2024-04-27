@@ -1,0 +1,26 @@
+{% extends 'Main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card text-center bg-warning mb-3">
+        {% for mg in MG %}
+      <div class="card-body">
+        <h5 class="card-title">Meeting Schedule</h5>
+        <p class="card-text">Meeting ID:{{mg.id}}</p>
+        <p class="card-text">Applicant:{{mg.user}}</p>
+        <p class="card-text">Pet:{{mg.PetPreference}}</p>
+        <p class="card-text">Time:{{mg.scheduledAt }}</p>
+
+
+
+
+        <a href="#" class="btn btn-primary">{{mg.location}}</a>
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+
+
+{% endblock  %}
