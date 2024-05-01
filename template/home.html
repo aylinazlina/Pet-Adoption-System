@@ -5,7 +5,42 @@
 {% load static %}
 
 {% block content %}
-<div class="banner">
+<style>
+
+   *{
+     margin:0;
+     padding:0;
+     box-sizing:border-box;
+     font-family:sans-serif;
+
+
+ }
+   .wrapper{
+ width:100%;
+
+ }
+
+.image{
+        background-size:cover;
+       height:20%;
+       width:100%;
+      -webkit-background-size:cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position:relative;
+   }
+</style>
+
+
+
+
+
+
+<div class="wrapper">
+<div class="welcome-text">
+   <img src="static/images/image/Group of pets.jpg" class="image"  >
+   
+</div>
 
 </div>
-{% endblock  %}
+{% endblock %}

@@ -1,5 +1,5 @@
 
- {% load static %}
+
  *{
      margin:0;
      padding:0;
@@ -7,10 +7,17 @@
 
 
  }
-.banner{
-  background: url(Girl_cat_playing.jpeg);
-
-height:500px or give to precentage(30% like that);
-width:1000px or give to precentage (70%);
-
+ .wrapper{
+ width:1170px;
+ margin:auto;
+ }
+#welcome-text{
+  background-image: url( "{% static 'D:\PAS\Git Setup\GL\Pet-Adoption-System\static\images\image\Group of pets.jpg' %}");
+  background-size:cover;
+  height:140vh;
+  -webkit-background-size:cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+   position:relative;
 }
+  

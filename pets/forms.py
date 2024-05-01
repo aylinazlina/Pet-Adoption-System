@@ -6,7 +6,7 @@ from .models import *
 
 class AddPetForm(ModelForm):
      class Meta:
-         model = PetPreference
+         model =PetPreference
          fields = '__all__'
 
 class CreateUserForm(UserCreationForm):

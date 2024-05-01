@@ -38,7 +38,7 @@ def Vaccination(request):
 
 def upload_pet(request):
     form =AddPetForm()
-    if request.method =='POST':
+    if request.method == 'POST':
         form = AddPetForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
@@ -47,7 +47,7 @@ def upload_pet(request):
         'form' : form,
     }
     return render(request,template_name='upload_pet.html',context=context)
-def update(request):
+def update(request,id):
     petp=PetPreference.objects.get(pk = id)
     form = AddPetForm(instance=petp)
     if request.method =='POST':
@@ -59,7 +59,7 @@ def update(request):
         'form' : form,
     }
     return render(request,template_name='upload_pet.html',context=context)
-def delete(request):
+def delete(request,id):
     petp = PetPreference.objects.get(pk=id)
 
     if request.method =='POST':

@@ -35,7 +35,7 @@ class PetPreference(models.Model):
     size = models.CharField(max_length=100, choices=size_choice, blank=True, null=True)
     description = models.TextField(max_length=200, null=True)
     adoptionFee = models.FloatField(blank=True, null=True)
-    image = models.ImageField(upload_to='images/',blank=True,null=True,default= 'images/default.jpg')
+    image = models.ImageField(upload_to='images/',blank=True,null=True,default='images/default.jpg')
 
     def __str__(self):
         return self.bread
