@@ -39,6 +39,7 @@ urlpatterns = [
     path('login/',p_view.loginPage,name='login'),
     path('logout/', p_view.logoutUser, name='logout'),
 
-    path('SignUp/',p_view.Sign_Up,name='SignUp')
+    path('SignUp/',p_view.Sign_Up,name='SignUp'),
+    path('user/',p_view.userPage,name='user-page')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

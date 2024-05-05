@@ -4,8 +4,10 @@ from .models import Service,PetPreference,Adoption,MeetAndGreet,Vacci
 from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate,login,logout
+from .decorators import unauthenticated_user,allowed_users,admin_only
+
 
 from .models import *
 from .forms import *
@@ -16,6 +18,7 @@ from .forms import CreateUserForm
 # Create your views here.
 
 @login_required(login_url='login')
+
 def home(request):
 
     return render(request,template_name='home.html')
@@ -35,7 +38,7 @@ def Vaccination(request):
         'Vacc': vac,
     }
     return render(request,template_name='Vaccination.html',context=context)
-
+@allowed_users(allowed_roles=['admin'])
 def upload_pet(request):
     form =AddPetForm()
     if request.method == 'POST':
@@ -47,6 +50,7 @@ def upload_pet(request):
         'form' : form,
     }
     return render(request,template_name='upload_pet.html',context=context)
+@allowed_users(allowed_roles=['admin'])
 def update(request,id):
     petp=PetPreference.objects.get(pk = id)
     form = AddPetForm(instance=petp)
@@ -59,6 +63,7 @@ def update(request,id):
         'form' : form,
     }
     return render(request,template_name='upload_pet.html',context=context)
+@allowed_users(allowed_roles=['admin'])
 def delete(request,id):
     petp = PetPreference.objects.get(pk=id)
 
@@ -83,6 +88,7 @@ def Foster(request):
     return render(request,template_name='Foster.html',context=context)
 
 @login_required(login_url='login')
+
 def Meet_and_Greet(request):
     meet = MeetAndGreet.objects.all()
     context = {
@@ -96,45 +102,48 @@ def About_Us(request):
 def Contact(request):
     return render(request,template_name='Contact.html')
 
-
+@unauthenticated_user
 def Sign_Up(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
-        form = CreateUserForm()
+    form = CreateUserForm()
 
-        if request.method =='POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request,'Account was created for' + user)
-                return redirect('login')
-        context ={
-            'form': form,
-        }
-        return render(request,template_name='Sign Up.html',context=context)
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user= form.save()
+            username = form.cleaned_data.get('username')
+            group =Group.objects.get(name='customer')
+            messages.success(request, 'Account was created for'+username )
+            return redirect('login')
+    context = {
+        'form': form,
+    }
+    return render(request, template_name='Sign Up.html', context=context)
 
+
+@unauthenticated_user
 def loginPage(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, 'Username OR password is incorrect')
 
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.info(request,'Username OR password is incorrect')
+    return render(request, template_name='login.html')
 
 
-    return render(request,template_name='login.html')
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+def userPage(request):
+    context ={
+
+    }
+    return render(request,template_name='user.html',context=context)
 
 
