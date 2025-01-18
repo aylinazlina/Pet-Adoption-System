@@ -49,13 +49,15 @@ Youtube-https://youtu.be/ruvY5J22VRk
 
 8.To use the image features in project install pilow: pip install pillow
 
-9.Run migrations: python manage.py migrate
+9.Run migrations: 
+python manage.py makemigrations
+python manage.py migrate
 
 10.Start the development server: python manage.py runserver
 Access the website at ( http://127.0.0.1:8000/)
 ## Found a bug?
 
-Contributions are welcome! If you'd like to contribute to Shoukhin_haat and help me, please follow these steps:
+Contributions are welcome! If you'd like to contribute to FurrEverCare and help me, please follow these steps:
 
 1.Fork the repository.
 
