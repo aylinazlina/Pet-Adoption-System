@@ -4,8 +4,12 @@
 
  Pet Adoption Platform
 
+ 
+##  Framework
+Django
+
 ## Languages Used
-django,python v.3.12,HTML,CSS,JS,BootStrap
+python v.3.12,HTML,CSS,JS,BootStrap
 ## Overview
 FurrEverCare-Your Pet Pals Emporium is an user-friendly online platform that streamlines and simplifies the adoption process.
 Our main goal is to creating happier, healthier lives for pets and their owners.
@@ -50,7 +54,9 @@ Youtube-https://youtu.be/ruvY5J22VRk
 8.To use the image features in project install pilow: pip install pillow
 
 9.Run migrations: 
+
 python manage.py makemigrations
+
 python manage.py migrate
 
 10.Start the development server: python manage.py runserver
